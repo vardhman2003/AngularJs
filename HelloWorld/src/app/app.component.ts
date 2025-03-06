@@ -1,19 +1,40 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  //
-  // imports: [RouterOutlet],
+  standalone: true,  // <-- Ensure this is added
+  imports: [RouterOutlet, FormsModule],  // <-- Add FormsModule here
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
   title = 'Hello From Bridgelabz';
-  logoUrl = 'https://i.pinimg.com/736x/71/d9/a9/71d9a9a5614ec8a9a17079ace15f10a0.jpg';
+  logoUrl = './assets/images/BridgeLabz.jpg';
+  
+  userName: string = "";
+  nameError: string = "";
+
+  ngOnInit(): void {
+    this.title = "Hello from brigdeLabz ! ";
+  }
 
   onClick($event:Event){
     console.log("Saved button on clicked",$event)
     window.open(this.logoUrl, "_blank");
   }
+
+  // onInput($event:any) {
+  //   console.log("Change event occured!", $event.data);
+  //   const nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+  //   if (nameRegex.test(this.userName)) {
+  //     this.nameError = "";
+  //     return;
+  //   }
+  //   this.nameError = "Name is incorrect";
+  // }
 }
+
+
